@@ -1,0 +1,8 @@
+C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService\obj\Debug\net5.0\FlightService.Web.csproj.AssemblyReference.cache
+C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService\obj\Debug\net5.0\FlightService.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService\obj\Debug\net5.0\FlightService.Web.AssemblyInfoInputs.cache
+C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService\obj\Debug\net5.0\FlightService.Web.AssemblyInfo.cs
+C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService\obj\Debug\net5.0\FlightService.Web.csproj.CoreCompileInputs.cache
+C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService\obj\Debug\net5.0\FlightService.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService\obj\Debug\net5.0\FlightService.Web.RazorAssemblyInfo.cache
+C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService\obj\Debug\net5.0\FlightService.Web.RazorAssemblyInfo.cs

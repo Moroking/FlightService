@@ -93,7 +93,7 @@ namespace FlightService.Data
                     {
                         while (reader.Read())
                         {
-                            Flight = new Flight(id, reader["Address"].ToString(), double.Parse(reader["Price"].ToString()));
+                            //Flight = new Flight(id, reader["Address"].ToString(), double.Parse(reader["Price"].ToString()));
 
                         }
                         connection.Close();
@@ -139,7 +139,7 @@ namespace FlightService.Data
                     {
                         while (reader.Read())
                         {
-                            Passenger = new Passenger(int.Parse(reader["Id"].ToString()), name);
+                           // Passenger = new Passenger(int.Parse(reader["Id"].ToString()), name);
 
                         }
                         connection.Close();

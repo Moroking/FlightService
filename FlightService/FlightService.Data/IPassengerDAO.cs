@@ -9,8 +9,11 @@ namespace FlightService.Data
     public interface IPassengerDAO
     {
         public IEnumerable<Passenger> ViewPassengers();
-        public bool AddPassengers(Passenger passenger);
-        public bool DeletePassengers(Passenger passengerNumber);
-        public Passenger GetPassenger(string passengerNumber);
+        public bool AddPassenger(Passenger passenger);
+        public bool DeletePassenger(int Id);
+        public Passenger GetPassenger(int Id);
+        public bool UpdatePassenger(Passenger passenger);
+
+
     }
 }

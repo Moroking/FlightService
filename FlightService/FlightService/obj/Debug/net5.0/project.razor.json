@@ -15657,6 +15657,11 @@
       "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Passengers\\Index.cshtml",
+      "TargetPath": "Views\\Passengers\\Index.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FlightService.Data
 {
@@ -6,7 +7,13 @@ namespace FlightService.Data
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            FlightDAO f = new FlightDAO();
+            List<Flight> ff = (List<Flight>)f.ViewFlights();
+            Console.WriteLine(ff.Capacity);
+
+
         }
+
+
     }
 }

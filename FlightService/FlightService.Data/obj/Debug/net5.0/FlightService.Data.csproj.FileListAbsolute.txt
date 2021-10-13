@@ -16,7 +16,6 @@ C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\
 C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService.Data\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
 C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService.Data\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService.Data\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService.Data\obj\Debug\net5.0\FlightService.Data.csproj.CopyComplete
 C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService.Data\obj\Debug\net5.0\FlightService.Data.dll
 C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService.Data\obj\Debug\net5.0\ref\FlightService.Data.dll
 C:\Users\moros\Desktop\SkillStorm Training\Project1\FlightService\FlightService\FlightService.Data\obj\Debug\net5.0\FlightService.Data.pdb

@@ -8,27 +8,23 @@ namespace FlightService.Data
 {
     public class Passenger
     {
+        public int Id { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
-
         public string job { get; set; }
         public string email { get; set; }
         public int age { get; set; }
-        public int socialsecurity { get; set; }
-        public int bookingNumber { get; set; }
 
         public Passenger() { }
 
-        public Passenger(string firstname, string lastname, string job, string email, int age,int socialsecurity, int bookingNumber)
+        public Passenger(int Id, string firstname, string lastname, string job, string email, int age)
         {
+            this.Id = Id;
             this.firstname = firstname;
             this.lastname = lastname;
-
             this.job = job;
             this.email = email;
             this.age = age;
-            this.socialsecurity = socialsecurity;
-            this.bookingNumber = bookingNumber;
         }
     }
 }

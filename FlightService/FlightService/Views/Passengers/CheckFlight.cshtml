@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<FlightService.Web.Models.BookingFlightViewModel>
+
+
+@{
+    ViewData["Title"] = "CheckFLight";
+}
+
+<div class="text-center">
+    <h2>View All Flights</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.bookingNumber)</td>
+
+                <td>@Html.DisplayNameFor(model => model.flightNumber)</td>
+                <td>@Html.DisplayNameFor(model => model.Airline)</td>
+                <td>@Html.DisplayNameFor(model => model.departureTime)</td>
+                <td>@Html.DisplayNameFor(model => model.departureDate)</td>
+                <td>@Html.DisplayNameFor(model => model.departureAirport)</td>
+                <td>@Html.DisplayNameFor(model => model.arrivalTime)</td>
+                <td>@Html.DisplayNameFor(model => model.arrivalDate)</td>
+                <td>@Html.DisplayNameFor(model => model.arrivalAirport)</td>
+                <td>@Html.DisplayNameFor(model => model.passengerLimit)</td>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelitem => flight.bookingNumber)</td>
+
+                <td>@Html.DisplayFor(modelitem => flight.flightNumber)</td>
+                <td>@Html.DisplayFor(modelitem => flight.Airline)</td>
+                <td>@Html.DisplayFor(modelitem => flight.departureTime)</td>
+                <td>@Html.DisplayFor(modelitem => flight.departureDate)</td>
+                <td>@Html.DisplayFor(modelitem => flight.departureAirport)</td>
+                <td>@Html.DisplayFor(modelitem => flight.arrivalTime)</td>
+                <td>@Html.DisplayFor(modelitem => flight.arrivalDate)</td>
+                <td>@Html.DisplayFor(modelitem => flight.arrivalAirport)</td>
+                <td>@Html.DisplayFor(modelitem => flight.passengerLimit)</td>
+                <td>@Html.ActionLink("Remove Booking", "DeleteBooking", new { id = flight.bookingNumber })</td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Details">Back to Details</a>
+
+</div>

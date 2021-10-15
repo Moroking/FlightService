@@ -290,7 +290,7 @@ header {
     background-color: white;
     padding: 20px;
     margin-top: 10px;
-    border: 1px solid darkgrey;
+    border: 3px dashed darkgrey;
     border-radius: 15px;
     box-shadow: 1px 1px 10px grey;
 }
@@ -341,3 +341,18 @@ html {
     text-align: left;
 
 }
+
+.card-main {
+    background-color: white;
+    padding: 20px;
+    margin-bottom:10px;
+    border: 1px solid darkgrey;
+    box-shadow: 1px 1px 10px grey;
+    display:inline-block;
+    border-radius:20px;
+}
+
+    .card-main:hover {
+        transform: scale(1.05);
+        transition: 0.1s;
+    }

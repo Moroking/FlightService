@@ -19,7 +19,7 @@ namespace FlightService.Web.Controllers
             this.flightDAO = flightDAO;
         }
 
-        public IActionResult Index()
+        public IActionResult Index() //gets all the flights and places them into a list of FlightViewModel
         {
             IEnumerable<Flight> flight = flightDAO.ViewFlights();
             List<FlightViewModel> model = new List<FlightViewModel>();
@@ -47,7 +47,7 @@ namespace FlightService.Web.Controllers
             return View(model);
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(int id) //gets one flight and displays the details of it
         {
             Flight model = flightDAO.GetFlight(id);
             FlightViewModel temp = new FlightViewModel
@@ -68,7 +68,7 @@ namespace FlightService.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id) //gets one flight and gives the user the option to delete it
         {
             Flight model = flightDAO.GetFlight(id);
 
@@ -92,7 +92,7 @@ namespace FlightService.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int id) //get req of the edit page so that the user will be able to edit it
         {
             Flight model = flightDAO.GetFlight(id);
 
@@ -138,7 +138,7 @@ namespace FlightService.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind] FlightViewModel flight)
+        public IActionResult Edit([Bind] FlightViewModel flight) //post req of the edit page so that the users edits can be saved and applied
         {
 
             Flight newFlight = new Flight();
@@ -161,7 +161,7 @@ namespace FlightService.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirm(FlightViewModel flight)
+        public IActionResult DeleteConfirm(FlightViewModel flight) //confirmation that the user wants to delete the flight and goes through with it
         {
             flightDAO.DeleteFlight(flight.Id);
             return RedirectToAction("Index");
@@ -170,7 +170,7 @@ namespace FlightService.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create() //creates a form page to give the user the ability to create a page
         {
             IEnumerable<string> airlineList = flightDAO.ViewAirlines();
 
@@ -198,7 +198,7 @@ namespace FlightService.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind] FlightViewModel flight)
+        public IActionResult Create([Bind] FlightViewModel flight) //post req of the create page so that the users creation can be saved and applied
         {
 
                 Random rand = new Random();
@@ -223,7 +223,7 @@ namespace FlightService.Web.Controllers
 
         }
 
-        public IActionResult CheckPassengers(int Id)
+        public IActionResult CheckPassengers(int Id) //check amount of the passengers booked to a flight to know if other passengers can or cannot book on this flight 
         {
             BookingDAO bookingDAO = new BookingDAO();
             IEnumerable<BookingPassenger> bookings = bookingDAO.GetPassengerBookings(Id);

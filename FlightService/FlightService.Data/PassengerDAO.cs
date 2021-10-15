@@ -31,7 +31,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the home " + ex);
+                    Console.WriteLine("Could not add passenger " + ex);
                     return false;
                 }
                 finally
@@ -58,7 +58,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the home " + ex);
+                    Console.WriteLine("Could not delete passenger " + ex);
                     return false;
                 }
                 finally
@@ -102,7 +102,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the home " + ex);
+                    Console.WriteLine("Could not get passenger " + ex);
                 }
                 finally
                 {
@@ -118,7 +118,6 @@ namespace FlightService.Data
         {
             using (SqlConnection connection = new SqlConnection(connString))
             {
-                Console.WriteLine(passenger.Id);
 
                 SqlCommand command = new SqlCommand("dbo.UpdatePassenger", connection);
                 command.CommandType = CommandType.StoredProcedure;
@@ -136,7 +135,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the home " + ex);
+                    Console.WriteLine("Could not update passenger " + ex);
                     return false;
                 }
                 finally
@@ -182,7 +181,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the Flight " + ex);
+                    Console.WriteLine("Could not view passengers " + ex);
                 }
                 finally
                 {

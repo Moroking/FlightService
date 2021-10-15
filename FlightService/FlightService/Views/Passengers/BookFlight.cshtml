@@ -36,12 +36,12 @@
 
                 @if (flight.passengerAmount < flight.passengerLimit)
                 {
-                    <p>Passenger Limt: @Html.DisplayFor(modelitem => flight.passengerLimit) @Html.ActionLink("Book Flight", "BookFlights", new { FlightId = flight.Id, PassengerId = ViewBag.Id }, new { @class = "details" })</p>
-
+                    <p>Passenger Limt: @Html.DisplayFor(modelitem => flight.passengerLimit) </p>
+            <p>@Html.ActionLink("Book Flight", "BookFlights", new { FlightId = flight.Id, PassengerId = ViewBag.Id }, new { @class = "details" })</p>
                 }
                 else
                 {
-                    <p>Passenger Limt: @Html.DisplayFor(modelitem => flight.passengerLimit) Full</p>
+                    <p style="color:red;">Full</p>
 
                 }
             </div>

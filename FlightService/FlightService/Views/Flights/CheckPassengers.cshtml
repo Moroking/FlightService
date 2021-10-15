@@ -12,9 +12,8 @@
     <h2>View All Passengers</h2>
 </div>
 <div class="text-center">
-    <a class="navbar-brand" asp-area="" asp-controller="Passengers" asp-action="Create">Add Passenger</a>
 
-
+   
     @foreach (var passenger in Model)
     {
 
@@ -27,18 +26,15 @@
                 <h4><img src="~/images/email.png" />@Html.DisplayFor(modelitem => passenger.email)</h4>
 
                 <h5>Age: @Html.DisplayFor(modelitem => passenger.age)</h5>
-
-
             </div>
-
         </div>
     }
     <br /><br />
-          <div class="action-center">
+    <div class="action-center">
 
-              <a asp-action="Index" class="details">Back to List</a>
-              @Html.ActionLink("Back to Details", "Details", new { Id = ViewBag.Id }, new { @class = "details" })
+        <a asp-action="Index" class="details">Back to List</a>
+        @Html.ActionLink("Back to Details", "Details", new { Id = ViewBag.Id }, new { @class = "details" })
 
-          </div>
+    </div>
 
 </div>

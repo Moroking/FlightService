@@ -22,8 +22,7 @@ namespace FlightService.Data
         public string arrivalAirport  { get; set; }
         public int passengerLimit { get; set; }
 
-        public Flight() { 
-        }
+        public Flight() { }
 
         public Flight(int Id, string flightNumber, string Airline , string departureDate, string departureTime, string arrivalDate, string arrivalTime, string departureAirport , string arrivalAirport , int passengerLimit)
         {

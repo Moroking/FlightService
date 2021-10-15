@@ -8,22 +8,18 @@ namespace FlightService.Data
 {
     public class Booking
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public int FlightId { get; set; }
         public int PassengerId { get; set; }
 
-
-
-        public Booking(int Id, int FlightId, int PassengerId)
+        public Booking(string Id, int FlightId, int PassengerId)
         {
             this.Id = Id;
             this.FlightId = FlightId;
             this.PassengerId = PassengerId;
         }
-        public Booking()
-        {
 
-        }
+        public Booking(){}
 
     }
 }

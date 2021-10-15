@@ -50,16 +50,15 @@ namespace FlightService.Web.Controllers
         public IActionResult Details(int id)
         {
             Flight model = flightDAO.GetFlight(id);
-            Console.WriteLine(model.flightNumber);
             FlightViewModel temp = new FlightViewModel
             {
                 Id = model.Id,
                 flightNumber = model.flightNumber,
                 Airline = model.Airline,
-                departureDate = model.departureDate,
-                arrivalDate = model.arrivalDate,
-                departureTime = model.departureTime,
-                arrivalTime = model.arrivalTime,
+                departureDate = DateTime.Parse(model.departureDate).ToString("MMMM, dd yyyy"),
+                arrivalDate = DateTime.Parse(model.arrivalDate).ToString("MMMM, dd yyyy"),
+                departureTime = DateTime.Parse(model.departureTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
+                arrivalTime = DateTime.Parse(model.arrivalTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
                 arrivalAirport = model.arrivalAirport,
                 departureAirport = model.departureAirport,
                 passengerLimit = model.passengerLimit
@@ -78,10 +77,10 @@ namespace FlightService.Web.Controllers
                 Id = model.Id,
                 flightNumber = model.flightNumber,
                 Airline = model.Airline,
-                departureDate = model.departureDate,
-                arrivalDate = model.arrivalDate,
-                departureTime = model.departureTime,
-                arrivalTime = model.arrivalTime,
+                departureDate = DateTime.Parse(model.departureDate).ToString("MMMM, dd yyyy"),
+                arrivalDate = DateTime.Parse(model.arrivalDate).ToString("MMMM, dd yyyy"),
+                departureTime = DateTime.Parse(model.departureTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
+                arrivalTime = DateTime.Parse(model.arrivalTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
                 arrivalAirport = model.arrivalAirport,
                 departureAirport = model.departureAirport,
                 passengerLimit = model.passengerLimit
@@ -102,8 +101,8 @@ namespace FlightService.Web.Controllers
                 Id = model.Id,
                 flightNumber = model.flightNumber,
                 Airline = model.Airline,
-                departureDate = model.departureDate,
-                arrivalDate = model.arrivalDate,
+                departureDate = DateTime.Parse(model.departureDate).ToString("yyyy-MM-dd"),
+                arrivalDate = DateTime.Parse(model.arrivalDate).ToString("yyyy-MM-dd"),
                 departureTime = model.departureTime,
                 arrivalTime = model.arrivalTime,
                 arrivalAirport = model.arrivalAirport,
@@ -205,7 +204,7 @@ namespace FlightService.Web.Controllers
                 Random rand = new Random();
                 Flight newFlight = new Flight();
                 newFlight.Id = flight.Id;
-                
+                    
                 newFlight.flightNumber = rand.Next(99, 9999).ToString();
                 newFlight.Airline = flight.Airline;
                 newFlight.departureDate = flight.departureDate;
@@ -216,7 +215,6 @@ namespace FlightService.Web.Controllers
                 newFlight.departureAirport = flight.departureAirport;
                 newFlight.passengerLimit = flight.passengerLimit;
 
-            Console.WriteLine(flight.departureDate + " " + flight.departureTime);
 
             flightDAO.AddFlight(newFlight);
 
@@ -236,7 +234,7 @@ namespace FlightService.Web.Controllers
             {
                 BookingPassengerViewModel temp = new BookingPassengerViewModel
                 {
-                    bookingNumber = book.bookingNumber,
+                    bookingNumber = book.bookingNumber.ToUpper(),
                     age = book.age,
                     email = book.email,
                     firstname = book.firstname,

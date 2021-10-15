@@ -9,7 +9,7 @@ namespace FlightService.Data
     public class BookingFlight
     {
 
-        public int bookingNumber { get; set; }
+        public string bookingNumber { get; set; }
 
         public string flightNumber { get; set; }
         public string Airline { get; set; }
@@ -24,7 +24,7 @@ namespace FlightService.Data
         public string arrivalAirport { get; set; }
         public int passengerLimit { get; set; }
 
-        public BookingFlight(int bookingNumber, 
+        public BookingFlight(string bookingNumber, 
             string flightNumber, 
             string Airline, 
             string departureDate, 

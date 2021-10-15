@@ -24,7 +24,6 @@ namespace FlightService.Data
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@FlightNumber", flight.flightNumber);
                 command.Parameters.AddWithValue("@IdAirline", flight.Airline);
-
                 command.Parameters.AddWithValue("@DepartureDate", DateTime.Parse(flight.departureDate));
                 command.Parameters.AddWithValue("@ArrivalDate", DateTime.Parse(flight.arrivalDate));
                 command.Parameters.AddWithValue("@DepartureTime", flight.departureTime);
@@ -40,7 +39,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the home " + ex);
+                    Console.WriteLine("Could not add the Flight " + ex);
                     return false;
                 }
                 finally
@@ -62,9 +61,7 @@ namespace FlightService.Data
                 SqlCommand command = new SqlCommand("[FlightService].[dbo].[UpdateFlight]", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@Id", flight.Id);
-
                 command.Parameters.AddWithValue("@IdAirline", flight.Airline);
-
                 command.Parameters.AddWithValue("@DepartureDate",flight.departureDate);
                 command.Parameters.AddWithValue("@ArrivalDate", flight.arrivalDate);
                 command.Parameters.AddWithValue("@DepartureTime", flight.departureTime);
@@ -80,7 +77,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the home " + ex);
+                    Console.WriteLine("Could not update the flight " + ex);
                     return false;
                 }
                 finally
@@ -98,12 +95,9 @@ namespace FlightService.Data
            
             using (SqlConnection connection = new SqlConnection(connString))
             {
-                Console.WriteLine(id);
-
                 SqlCommand command = new SqlCommand("[FlightService].[dbo].[DeleteFlight]", connection);
                 command.CommandType = CommandType.StoredProcedure; 
                 command.Parameters.AddWithValue("@Id", id);
-
 
                 try
                 {
@@ -112,13 +106,12 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the home " + ex);
+                    Console.WriteLine("Could not delete flight " + ex);
                     return false;
                 }
                 finally
                 {
                     connection.Close();
-
                 }
                 return true;
 
@@ -127,7 +120,6 @@ namespace FlightService.Data
 
         public Flight GetFlight(int id)
         {
-            Console.WriteLine(id);
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 SqlCommand command = new SqlCommand("dbo.GetFlight", connection);

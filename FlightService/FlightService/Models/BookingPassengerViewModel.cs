@@ -9,7 +9,7 @@ namespace FlightService.Web.Models
     public class BookingPassengerViewModel
     {
         [Display(Name = "Booking Number")]
-        public int bookingNumber { get; set; }
+        public string bookingNumber { get; set; }
 
         [Required]
         [Display(Name = "First Name")]

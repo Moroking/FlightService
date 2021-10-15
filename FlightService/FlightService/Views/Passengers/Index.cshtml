@@ -12,29 +12,34 @@
 <div class="card-header">
     <h2>View All Passengers</h2>
 </div>
-    <div class="text-center">
-        <a class="navbar-brand" asp-area="" asp-controller="Passengers" asp-action="Create">Add Passenger</a>
+
+<br />
+<div class="card">
+    <a class="navbar-brand" asp-area="" asp-controller="Passengers" asp-action="Create">Add Passenger</a>
+</div>
+<br />
+<div class="text-center">
 
 
-        @foreach (var passenger in Model)
-        {
+    @foreach (var passenger in Model)
+    {
 
-            <div class="leftcolumn">
-                <div class="card">
-                    <h3><img src="~/images/passenger.png" width="50" />@Html.DisplayFor(modelitem => passenger.firstname) @Html.DisplayFor(modelitem => passenger.lastname) </h3>
-                    <h4><img src="~/images/work.png" />@Html.DisplayFor(modelitem => passenger.job)</h4>
-                    <h4><img src="~/images/email.png" />@Html.DisplayFor(modelitem => passenger.email)</h4>
+        <div class="leftcolumn">
+            <div class="card">
+                <h3><img src="~/images/passenger.png" width="50" />@Html.DisplayFor(modelitem => passenger.firstname) @Html.DisplayFor(modelitem => passenger.lastname) </h3>
+                <h4><img src="~/images/work.png" />@Html.DisplayFor(modelitem => passenger.job)</h4>
+                <h4><img src="~/images/email.png" />@Html.DisplayFor(modelitem => passenger.email)</h4>
 
-                    <h5>Age: @Html.DisplayFor(modelitem => passenger.age)</h5>
+                <h5>Age: @Html.DisplayFor(modelitem => passenger.age)</h5>
 
 
-                    <p>@Html.ActionLink("Details", "Details", new { Id = passenger.Id }, new { @class = "details" })</p>
-                </div>
-
+                <p>@Html.ActionLink("Details", "Details", new { Id = passenger.Id }, new { @class = "details" })</p>
             </div>
 
+        </div>
 
 
-        }
 
-    </div>
+    }
+
+</div>

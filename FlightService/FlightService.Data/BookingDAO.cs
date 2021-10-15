@@ -19,7 +19,6 @@ namespace FlightService.Data
             {
                 SqlCommand command = new SqlCommand("dbo.BookFlight", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@Id", booking.Id);
                 command.Parameters.AddWithValue("@PassengerId", booking.PassengerId);
                 command.Parameters.AddWithValue("@FlightId", booking.FlightId);
                 try
@@ -56,7 +55,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the home " + ex);
+                    Console.WriteLine("Could not check passenger amount " + ex);
                 }
                 finally
                 {
@@ -69,8 +68,6 @@ namespace FlightService.Data
 
         public Booking GetBooking(int FlightId)
         {
-
-
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 SqlCommand command = new SqlCommand("dbo.GetBookings", connection);
@@ -79,17 +76,15 @@ namespace FlightService.Data
                 try
                 {
                     connection.Open();
-
                     SqlDataReader reader = command.ExecuteReader();
 
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-                            booking = new Booking(int.Parse(reader["Id"].ToString()),
-                                                     int.Parse(reader["FlightId"].ToString()),
-                                                    int.Parse(reader["PassengerId"].ToString()));
-
+                            booking = new Booking(reader["Id"].ToString(),
+                                                  int.Parse(reader["FlightId"].ToString()),
+                                                  int.Parse(reader["PassengerId"].ToString()));
 
                             return booking;
                         }
@@ -97,7 +92,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the Flight " + ex);
+                    Console.WriteLine("Could not get Booking " + ex);
                 }
                 finally
                 {
@@ -127,10 +122,9 @@ namespace FlightService.Data
                     {
                         while (reader.Read())
                         {
-                            Booking temp = new Booking(int.Parse(reader["Id"].ToString()),
+                            Booking temp = new Booking(reader["Id"].ToString(),
                                                      int.Parse(reader["FlightId"].ToString()),
                                                     int.Parse(reader["PassengerId"].ToString()));
-
 
                             bookingList.Add(temp);
                         }
@@ -138,7 +132,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the Flight " + ex);
+                    Console.WriteLine("Could not get Bookings " + ex);
                 }
                 finally
                 {
@@ -168,7 +162,7 @@ namespace FlightService.Data
                     {
                         while (reader.Read())
                         {
-                            BookingFlight temp = new BookingFlight(int.Parse(reader["bookingNumber"].ToString()),
+                            BookingFlight temp = new BookingFlight(reader["bookingNumber"].ToString(),
                                                      reader["DesignatorCode"].ToString() + reader["FlightNumber"].ToString(),
                                                      reader["Name"].ToString(),
                                                      reader["DepartureDate"].ToString(),
@@ -186,7 +180,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the Flight " + ex);
+                    Console.WriteLine("Could not get the Flight Bookings" + ex);
                 }
                 finally
                 {
@@ -217,7 +211,7 @@ namespace FlightService.Data
                     {
                         while (reader.Read())
                         {
-                            BookingPassenger temp = new BookingPassenger(int.Parse(reader["Id"].ToString()),
+                            BookingPassenger temp = new BookingPassenger(reader["Id"].ToString(),
                                                      reader["FirstName"].ToString(),
                                                      reader["LastName"].ToString(),
                                                      reader["Job"].ToString(),
@@ -231,7 +225,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the Flight " + ex);
+                    Console.WriteLine("Could not get the Passenger Bookings " + ex);
                 }
                 finally
                 {
@@ -242,11 +236,10 @@ namespace FlightService.Data
 
         }
 
-        public bool DeleteBooking(int Id)
+        public bool DeleteBooking(string Id)
         {
             using (SqlConnection connection = new SqlConnection(connString))
             {
-                Console.WriteLine(Id);
 
                 SqlCommand command = new SqlCommand("dbo.DeleteBooking", connection);
                 command.CommandType = CommandType.StoredProcedure;
@@ -258,7 +251,7 @@ namespace FlightService.Data
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Could not get the home " + ex);
+                    Console.WriteLine("Could not delete bookings " + ex);
                     return false;
                 }
                 finally
@@ -270,6 +263,77 @@ namespace FlightService.Data
 
             }
         }
-        
+
+        public int GetBookingId(string Id)
+        {
+            using (SqlConnection connection = new SqlConnection(connString))
+            {
+                SqlCommand command = new SqlCommand("dbo.GetBookingId", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Id", Id);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                        while (reader.Read())
+                            return int.Parse(reader["Id"].ToString());
+
+
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("Could not get booking id " + ex);
+                }
+                finally
+                {
+                    connection.Close();
+
+                }
+                return 0;
+            }
+        }
+
+        public int CheckIfBooked(int PassengerId, int FlightId)
+        {
+            using (SqlConnection connection = new SqlConnection(connString))
+            {
+                SqlCommand command = new SqlCommand("dbo.CheckIfBooked", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@FlightId", FlightId);
+                command.Parameters.AddWithValue("@PassengerId", PassengerId);
+
+
+                var returnParameter = command.Parameters.Add("@Exists", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    return int.Parse(returnParameter.Value.ToString());
+
+
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("Could not check if booked " + ex);
+                }catch (InvalidOperationException ex)
+                {
+                    return 2;
+
+                }
+                finally
+                {
+                    connection.Close();
+
+                }
+                return 2;
+            }
+        }
     }
+
+    
 }

@@ -8,14 +8,14 @@ namespace FlightService.Data
 {
     public class BookingPassenger
     {
-        public int bookingNumber { get; set; }
+        public string bookingNumber { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string job { get; set; }
         public string email { get; set; }
         public int age { get; set; }
 
-        public BookingPassenger(int bookingNumber, string firstname, string lastname, string job, string email, int age)
+        public BookingPassenger(string bookingNumber, string firstname, string lastname, string job, string email, int age)
         {
             this.bookingNumber = bookingNumber;
             this.firstname = firstname;

@@ -18,7 +18,7 @@
     {
         <div class="leftcolumn">
             <div class="card">
-                <h2>@Html.DisplayFor(modelitem => flight.bookingNumber)</h2>
+                <h2>REF: @Html.DisplayFor(modelitem => flight.bookingNumber)</h2>
 
                 <h3><img src="~/images/airline.png" />@Html.DisplayFor(modelitem => flight.flightNumber)</h3>
                 <h4>@Html.DisplayFor(modelitem => flight.Airline)</h4>
@@ -37,8 +37,8 @@
                 <p><strong>@Html.DisplayFor(modelitem => flight.departureAirport)</strong> to <strong>@Html.DisplayFor(modelitem => flight.arrivalAirport)</strong></p>
 
 
-                <p>Passenger Limt: @Html.DisplayFor(modelitem => flight.passengerLimit) @Html.ActionLink("Remove Booking", "DeleteBooking", new { id = flight.bookingNumber }, new { @class = "details" })</p>
-
+                <p>Passenger Limt: @Html.DisplayFor(modelitem => flight.passengerLimit) </p>
+                <p>@Html.ActionLink("Remove Booking", "DeleteBooking", new { id = flight.bookingNumber }, new { @class = "details" })</p>
 
 
             </div>

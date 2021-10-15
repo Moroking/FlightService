@@ -3,6 +3,7 @@ using FlightService.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,9 +40,6 @@ namespace FlightService.Web.Controllers
 
             return View(model);
         }
-
- 
-
 
         public IActionResult Details(int Id)
         {
@@ -135,7 +133,6 @@ namespace FlightService.Web.Controllers
 
         }
 
-
         [HttpGet]
         public IActionResult Create()
         {
@@ -173,28 +170,33 @@ namespace FlightService.Web.Controllers
             
             List<FlightViewModel> model = new List<FlightViewModel>();
 
-            foreach (var home in flight)
+            foreach (var book in flight)
             {
-                int passengerAmount = bookingDAO.CheckPassengersAmount(home.Id);
-                Console.WriteLine(passengerAmount + " PA " + home.passengerLimit);
-
-                FlightViewModel temp = new FlightViewModel
+                int passengerAmount = bookingDAO.CheckPassengersAmount(book.Id);
+                int bkcheck = bookingDAO.CheckIfBooked(id, book.Id);
+                if (bkcheck==0)
                 {
-                    Id = home.Id,
 
-                    flightNumber = home.flightNumber,
-                    Airline = home.Airline,
-                    departureDate = home.departureDate,
-                    arrivalDate = home.arrivalDate,
-                    departureTime = home.departureTime,
-                    arrivalTime = home.arrivalTime,
-                    arrivalAirport = home.arrivalAirport,
-                    departureAirport = home.departureAirport,
-                    passengerLimit = home.passengerLimit,
-                    passengerAmount = passengerAmount
-                };
 
-                model.Add(temp);
+
+                    FlightViewModel temp = new FlightViewModel
+                    {
+                        Id = book.Id,
+
+                        flightNumber = book.flightNumber,
+                        Airline = book.Airline,
+                        departureDate = DateTime.Parse(book.departureDate).ToString("MMMM, dd yyyy"),
+                        arrivalDate = DateTime.Parse(book.arrivalDate).ToString("MMMM, dd yyyy"),
+                        departureTime = DateTime.Parse(book.departureTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
+                        arrivalTime = DateTime.Parse(book.arrivalTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
+                        arrivalAirport = book.arrivalAirport,
+                        departureAirport = book.departureAirport,
+                        passengerLimit = book.passengerLimit,
+                        passengerAmount = passengerAmount
+                    };
+                    model.Add(temp);
+
+                }
             }
 
             ViewBag.Id = id;
@@ -206,8 +208,8 @@ namespace FlightService.Web.Controllers
         {
 
             BookingDAO bookingDAO = new BookingDAO();
-
-            Booking b = new Booking(GetBookingNumber(FlightId, PassengerId), 
+        
+            Booking b = new Booking("", 
                                     FlightId, 
                                     PassengerId);
 
@@ -219,7 +221,6 @@ namespace FlightService.Web.Controllers
 
         }
 
-        
         public IActionResult CheckFlight(int Id)
         {
             BookingDAO bookingDAO = new BookingDAO();
@@ -231,19 +232,18 @@ namespace FlightService.Web.Controllers
             {
                 BookingFlightViewModel temp = new BookingFlightViewModel
                 {
-                    bookingNumber = book.bookingNumber,
+                    bookingNumber = book.bookingNumber.ToUpper(),
                     flightNumber = book.flightNumber,
                     Airline = book.Airline,
-                    departureDate = book.departureDate,
-                    arrivalDate = book.arrivalDate,
-                    departureTime = book.departureTime,
-                    arrivalTime = book.arrivalTime,
+                    departureDate = DateTime.Parse(book.departureDate).ToString("MMMM, dd yyyy"),
+                    arrivalDate = DateTime.Parse(book.arrivalDate).ToString("MMMM, dd yyyy"),
+                    departureTime = DateTime.Parse(book.departureTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
+                    arrivalTime = DateTime.Parse(book.arrivalTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
                     arrivalAirport = book.arrivalAirport,
                     departureAirport = book.departureAirport,
                     passengerLimit = book.passengerLimit
                 };
 
-                Console.WriteLine(temp.bookingNumber);
                 model.Add(temp);
             }
             ViewBag.Id = Id;
@@ -253,32 +253,8 @@ namespace FlightService.Web.Controllers
 
         }
 
-
-        public int GetBookingNumber(int FlightId, int PassengerId)
+        public IActionResult DeleteBooking(string id)
         {
-            FlightDAO flightDAO = new FlightDAO();
-            Flight f = flightDAO.GetFlight(FlightId);
-            Passenger p = passengerDAO.GetPassenger(PassengerId);
-
-            int prime = 31;
-            int result = 1;
-
-            result = prime * result + p.firstname.GetHashCode();
-            result = prime * result + p.lastname.GetHashCode();
-            result = prime * result + p.age.GetHashCode();
-            result = prime * result + f.flightNumber.GetHashCode();
-            result = prime * result + f.Id.GetHashCode();
-            result = prime * result + p.Id.GetHashCode();
-
-            result = (int)(result % 1e6);
-            Console.WriteLine(result);
-            return Math.Abs(result);
-        }
-
-        public IActionResult DeleteBooking(int id)
-        {
-            Console.WriteLine(id);
-
             BookingDAO bookingDAO = new BookingDAO();
             bookingDAO.DeleteBooking(id);
 

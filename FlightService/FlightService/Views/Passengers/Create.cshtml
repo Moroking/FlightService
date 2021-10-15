@@ -8,9 +8,8 @@
 <div class="card-header">
     <h2>Create</h2>
 </div>
+<br />
 
-<h4>Home</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" class="action-center">
@@ -45,11 +44,12 @@
                 <span asp-validation-for="age" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="details" />
             </div>
         </form>
     </div>
 </div>
+<br />
 
 <div>
     <a asp-action="Index" class="details">Back to List</a>

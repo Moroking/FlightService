@@ -63,7 +63,6 @@ namespace FlightService.Data
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@Id", flight.Id);
 
-                command.Parameters.AddWithValue("@FlightNumber", flight.flightNumber);
                 command.Parameters.AddWithValue("@IdAirline", flight.Airline);
 
                 command.Parameters.AddWithValue("@DepartureDate",flight.departureDate);

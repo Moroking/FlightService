@@ -15619,13 +15619,38 @@
   "RootNamespace": "FlightService.Web",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Flights\\Details.cshtml",
+      "TargetPath": "Views\\Flights\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Passengers\\Create.cshtml",
+      "TargetPath": "Views\\Passengers\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Passengers\\CheckFlight.cshtml",
+      "TargetPath": "Views\\Passengers\\CheckFlight.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Flights\\Index.cshtml",
       "TargetPath": "Views\\Flights\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Flights\\Delete.cshtml",
+      "TargetPath": "Views\\Flights\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Flights\\CheckPassengers.cshtml",
+      "TargetPath": "Views\\Flights\\CheckPassengers.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15649,8 +15674,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Flights\\Edit.cshtml",
+      "TargetPath": "Views\\Flights\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Passengers\\Delete.cshtml",
+      "TargetPath": "Views\\Passengers\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15659,8 +15694,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Passengers\\Details.cshtml",
+      "TargetPath": "Views\\Passengers\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Passengers\\Index.cshtml",
       "TargetPath": "Views\\Passengers\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Passengers\\BookFlight.cshtml",
+      "TargetPath": "Views\\Passengers\\BookFlight.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Flights\\Create.cshtml",
+      "TargetPath": "Views\\Flights\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\moros\\Desktop\\SkillStorm Training\\Project1\\FlightService\\FlightService\\FlightService\\Views\\Passengers\\Edit.cshtml",
+      "TargetPath": "Views\\Passengers\\Edit.cshtml",
       "FileKind": "mvc"
     }
   ],

@@ -23,6 +23,27 @@ namespace FlightService.Controllers
             return View();
         }
 
+        public IActionResult Flights()
+        {
+            return RedirectToAction("Index", "Flights");
+        }
+
+        public IActionResult Passengers()
+        {
+            return RedirectToAction("Index", "Passengers");
+        }
+
+
+        public IActionResult AddFlight()
+        {
+            return RedirectToAction("Create", "Flights");
+        }
+
+        public IActionResult AddPassenger()
+        {
+            return RedirectToAction("Create", "Passengers");
+        }
+
         public IActionResult Privacy()
         {
             return View();

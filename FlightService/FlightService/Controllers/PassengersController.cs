@@ -47,7 +47,18 @@ namespace FlightService.Web.Controllers
         {
             Passenger model = passengerDAO.GetPassenger(Id);
 
-            return View(model);
+            PassengerViewModel temp = new PassengerViewModel
+            {
+                Id = model.Id,
+                age = model.age,
+                email = model.email,
+                firstname = model.firstname,
+                lastname = model.lastname,
+                job = model.job
+
+            };
+
+            return View(temp);
         }
 
         [HttpGet]
@@ -55,7 +66,18 @@ namespace FlightService.Web.Controllers
         {
             Passenger model = passengerDAO.GetPassenger(Id);
 
-            return View(model);
+            PassengerViewModel temp = new PassengerViewModel
+            {
+                Id = model.Id,
+                age = model.age,
+                email = model.email,
+                firstname = model.firstname,
+                lastname = model.lastname,
+                job = model.job
+
+            };
+
+            return View(temp);
 
 
         }
@@ -224,6 +246,8 @@ namespace FlightService.Web.Controllers
                 Console.WriteLine(temp.bookingNumber);
                 model.Add(temp);
             }
+            ViewBag.Id = Id;
+
 
             return View(model);
 

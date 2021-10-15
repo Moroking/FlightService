@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,19 +23,19 @@ namespace FlightService.Web.Controllers
         {
             IEnumerable<Flight> flight = flightDAO.ViewFlights();
             List<FlightViewModel> model = new List<FlightViewModel>();
-
             foreach (var home in flight)
             {
+           
                 FlightViewModel temp = new FlightViewModel
                 {
                     Id = home.Id,
 
                     flightNumber = home.flightNumber,
                     Airline = home.Airline,
-                    departureDate = home.departureDate,
-                    arrivalDate = home.arrivalDate,
-                    departureTime = home.departureTime,
-                    arrivalTime = home.arrivalTime,
+                    departureDate = DateTime.Parse(home.departureDate).ToString("MMMM, dd yyyy"),
+                    arrivalDate = DateTime.Parse(home.arrivalDate).ToString("MMMM, dd yyyy"),
+                    departureTime = DateTime.Parse(home.departureTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
+                    arrivalTime = DateTime.Parse(home.arrivalTime).ToString("h:mm tt", CultureInfo.CurrentCulture),
                     arrivalAirport = home.arrivalAirport,
                     departureAirport = home.departureAirport,
                     passengerLimit = home.passengerLimit
@@ -49,8 +50,22 @@ namespace FlightService.Web.Controllers
         public IActionResult Details(int id)
         {
             Flight model = flightDAO.GetFlight(id);
+            Console.WriteLine(model.flightNumber);
+            FlightViewModel temp = new FlightViewModel
+            {
+                Id = model.Id,
+                flightNumber = model.flightNumber,
+                Airline = model.Airline,
+                departureDate = model.departureDate,
+                arrivalDate = model.arrivalDate,
+                departureTime = model.departureTime,
+                arrivalTime = model.arrivalTime,
+                arrivalAirport = model.arrivalAirport,
+                departureAirport = model.departureAirport,
+                passengerLimit = model.passengerLimit
+            };
 
-            return View(model);
+            return View(temp);
         }
 
         [HttpGet]
@@ -58,7 +73,21 @@ namespace FlightService.Web.Controllers
         {
             Flight model = flightDAO.GetFlight(id);
 
-            return View(model);
+            FlightViewModel temp = new FlightViewModel
+            {
+                Id = model.Id,
+                flightNumber = model.flightNumber,
+                Airline = model.Airline,
+                departureDate = model.departureDate,
+                arrivalDate = model.arrivalDate,
+                departureTime = model.departureTime,
+                arrivalTime = model.arrivalTime,
+                arrivalAirport = model.arrivalAirport,
+                departureAirport = model.departureAirport,
+                passengerLimit = model.passengerLimit
+            };
+
+            return View(temp);
 
 
         }
@@ -115,7 +144,6 @@ namespace FlightService.Web.Controllers
 
             Flight newFlight = new Flight();
             newFlight.Id = flight.Id;
-            newFlight.flightNumber = "2";
             newFlight.Airline = flight.Airline;
             newFlight.departureDate = flight.departureDate;
             newFlight.arrivalDate = flight.arrivalDate;
@@ -174,11 +202,11 @@ namespace FlightService.Web.Controllers
         public IActionResult Create([Bind] FlightViewModel flight)
         {
 
-          
+                Random rand = new Random();
                 Flight newFlight = new Flight();
                 newFlight.Id = flight.Id;
-
-                newFlight.flightNumber = "2";
+                
+                newFlight.flightNumber = rand.Next(99, 9999).ToString();
                 newFlight.Airline = flight.Airline;
                 newFlight.departureDate = flight.departureDate;
                 newFlight.arrivalDate = flight.arrivalDate;
@@ -218,6 +246,7 @@ namespace FlightService.Web.Controllers
 
                 model.Add(temp);
             }
+            ViewBag.Id = Id;
 
             return View(model);
 

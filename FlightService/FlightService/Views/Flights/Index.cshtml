@@ -8,46 +8,36 @@
 @{
     ViewData["Title"] = "Flights";
 }
-
-<div class="text-center">
+<div class="card-header">
     <h2>View All Flights</h2>
+</div>
+<div class="text-center">
     <a class="navbar-brand" asp-area="" asp-controller="Flights" asp-action="Create">Add Flight</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <td>@Html.DisplayNameFor(model => model.flightNumber)</td>
-                <td>@Html.DisplayNameFor(model => model.Airline)</td>
-                <td>@Html.DisplayNameFor(model => model.departureTime)</td>
-                <td>@Html.DisplayNameFor(model => model.arrivalTime)</td>
-                <td>@Html.DisplayNameFor(model => model.arrivalDate)</td>
-
-                <td>@Html.DisplayNameFor(model => model.departureDate)</td>
-                <td>@Html.DisplayNameFor(model => model.departureAirport)</td>
-                <td>@Html.DisplayNameFor(model => model.arrivalAirport)</td>
-                <td>@Html.DisplayNameFor(model => model.passengerLimit)</td>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach (var flight in Model)
             {
-            <tr>
-                <td>@Html.DisplayFor(modelitem => flight.flightNumber)</td>
-                <td>@Html.DisplayFor(modelitem => flight.Airline)</td>
-                <td>@Html.DisplayFor(modelitem => flight.departureTime)</td>
-                <td>@Html.DisplayFor(modelitem => flight.arrivalTime)</td>
+                <div class="leftcolumn">
+                    <div class="card">
+                        <h3><img src="~/images/airline.png" />@Html.DisplayFor(modelitem => flight.flightNumber)</h3>
+                        <h4>@Html.DisplayFor(modelitem => flight.Airline)</h4>
 
-                <td>@Html.DisplayFor(modelitem => flight.departureDate)</td>
-                <td>@Html.DisplayFor(modelitem => flight.arrivalDate)</td>
+                        <h5>@Html.DisplayFor(modelitem => flight.departureTime) - @Html.DisplayFor(modelitem => flight.arrivalTime)</h5>
+                         @if (flight.departureDate.Equals(flight.arrivalDate))
+                         {
+                            <p>@Html.DisplayFor(modelitem => flight.arrivalDate)</p>
 
-                <td>@Html.DisplayFor(modelitem => flight.departureAirport)</td>
-                <td>@Html.DisplayFor(modelitem => flight.arrivalAirport)</td>
-                <td>@Html.DisplayFor(modelitem => flight.passengerLimit)</td>
-                <td>@Html.ActionLink("Details", "Details", new { Id = flight.Id })</td>
+                         }
+                         else
+                         {
+                            <p>@Html.DisplayFor(modelitem => flight.departureDate) - @Html.DisplayFor(modelitem => flight.arrivalDate)</p>
 
-            </tr>
+                         }
+                            <p><strong>@Html.DisplayFor(modelitem => flight.departureAirport)</strong> to <strong>@Html.DisplayFor(modelitem => flight.arrivalAirport)</strong></p>
+
+                            <p>Passenger Limt: @Html.DisplayFor(modelitem => flight.passengerLimit) @Html.ActionLink("Details", "Details", new { Id = flight.Id }, new { @class = "details" })</p>
+                    </div>
+
+                </div>
+
             }
-        </tbody>
-    </table>
 </div>

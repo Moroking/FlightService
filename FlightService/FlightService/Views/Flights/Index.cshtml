@@ -39,7 +39,8 @@
                 }
                 <p><strong>@Html.DisplayFor(modelitem => flight.departureAirport)</strong> to <strong>@Html.DisplayFor(modelitem => flight.arrivalAirport)</strong></p>
 
-                <p>Passenger Limt: @Html.DisplayFor(modelitem => flight.passengerLimit) @Html.ActionLink("Details", "Details", new { Id = flight.Id }, new { @class = "details" })</p>
+                <p>Passenger Limt: @Html.DisplayFor(modelitem => flight.passengerLimit) <p style="text-align:right;">@Html.ActionLink("Details", "Details", new { Id = flight.Id }, new { @class = "details" })</p></p>
+
             </div>
 
         </div>

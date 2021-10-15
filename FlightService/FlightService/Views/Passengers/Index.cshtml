@@ -26,14 +26,14 @@
 
         <div class="leftcolumn">
             <div class="card">
-                <h3><img src="~/images/passenger.png" width="50" />@Html.DisplayFor(modelitem => passenger.firstname) @Html.DisplayFor(modelitem => passenger.lastname) </h3>
+                <h1><img src="~/images/passenger.png" width="50" />@Html.DisplayFor(modelitem => passenger.firstname) @Html.DisplayFor(modelitem => passenger.lastname) </h1>
                 <h4><img src="~/images/work.png" />@Html.DisplayFor(modelitem => passenger.job)</h4>
                 <h4><img src="~/images/email.png" />@Html.DisplayFor(modelitem => passenger.email)</h4>
 
-                <h5>Age: @Html.DisplayFor(modelitem => passenger.age)</h5>
+                <h4>Age: @Html.DisplayFor(modelitem => passenger.age)</h4>
 
 
-                <p>@Html.ActionLink("Details", "Details", new { Id = passenger.Id }, new { @class = "details" })</p>
+                <p style="text-align:right;">@Html.ActionLink("Details", "Details", new { Id = passenger.Id }, new { @class = "details" })</p>
             </div>
 
         </div>

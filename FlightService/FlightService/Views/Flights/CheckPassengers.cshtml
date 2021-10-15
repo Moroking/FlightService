@@ -19,13 +19,13 @@
 
         <div class="leftcolumn">
             <div class="card">
-                <h2>@Html.DisplayFor(modelitem => passenger.bookingNumber)</h2>
+                <h1>REF: @Html.DisplayFor(modelitem => passenger.bookingNumber)</h1>
 
-                <h3><img src="~/images/passenger.png" width="50" />@Html.DisplayFor(modelitem => passenger.firstname) @Html.DisplayFor(modelitem => passenger.lastname) </h3>
+                <h2><img src="~/images/passenger.png" width="50" />@Html.DisplayFor(modelitem => passenger.firstname) @Html.DisplayFor(modelitem => passenger.lastname) </h2>
                 <h4><img src="~/images/work.png" />@Html.DisplayFor(modelitem => passenger.job)</h4>
                 <h4><img src="~/images/email.png" />@Html.DisplayFor(modelitem => passenger.email)</h4>
 
-                <h5>Age: @Html.DisplayFor(modelitem => passenger.age)</h5>
+                <h4>Age: @Html.DisplayFor(modelitem => passenger.age)</h4>
             </div>
         </div>
     }

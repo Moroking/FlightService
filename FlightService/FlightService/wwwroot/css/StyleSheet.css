@@ -286,9 +286,12 @@ header {
 
 /* Add a card effect for articles */
 .card {
-
-    background-color: white;
-    padding: 20px;
+    background: rgb(255,255,255);
+    background: linear-gradient(142deg, rgba(255,255,255,1) 0%, rgba(224,224,224,1) 100%);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-top: 10px;
     border: 3px dashed darkgrey;
     border-radius: 15px;
